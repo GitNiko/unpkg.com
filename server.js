@@ -26,18 +26,20 @@ function startServer(id) {
       id,
       serverConfig.port
     );
-  });
+  }); 
 }
 
-throng({
-  workers: process.env.WEB_CONCURRENCY || 1,
-  start: startServer,
-  lifetime: Infinity,
+startServer()
 
-  // In production, increase throng's default grace period to allow
-  // servers that are still handling requests to finish. Heroku shuts
-  // down processes forcefully after 30 seconds, so exit before that
-  // happens to avoid an exit timeout.
-  // https://devcenter.heroku.com/articles/dynos#shutdown
-  grace: process.env.NODE_ENV === "production" ? 25000 : 5000
-});
+// throng({
+//   workers: process.env.WEB_CONCURRENCY || 1,
+//   start: startServer,
+//   lifetime: Infinity,
+
+//   // In production, increase throng's default grace period to allow
+//   // servers that are still handling requests to finish. Heroku shuts
+//   // down processes forcefully after 30 seconds, so exit before that
+//   // happens to avoid an exit timeout.
+//   // https://devcenter.heroku.com/articles/dynos#shutdown
+//   grace: process.env.NODE_ENV === "production" ? 25000 : 5000
+// });

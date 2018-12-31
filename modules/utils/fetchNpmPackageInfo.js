@@ -1,5 +1,6 @@
 const url = require("url");
 const https = require("https");
+const http = require("http")
 
 const serverConfig = require("../serverConfig");
 const bufferStream = require("./bufferStream");
@@ -21,7 +22,7 @@ function fetchNpmPackageInfo(packageName) {
 
     logging.debug("Fetching package info for %s from %s", packageName, infoURL);
 
-    const { hostname, pathname } = url.parse(infoURL);
+    const { hostname, pathname, protocol, port} = url.parse(infoURL);
     const options = {
       agent: agent,
       hostname: hostname,
@@ -30,8 +31,13 @@ function fetchNpmPackageInfo(packageName) {
         Accept: "application/json"
       }
     };
-
-    https
+    let request = https
+    if(protocol !== 'https:') {
+      request = http
+      delete options.agent
+      options.port = port
+    }
+    request
       .get(options, res => {
         if (res.statusCode === 200) {
           resolve(parseJSON(res));

@@ -95,6 +95,8 @@ function createRouter() {
     require("./middleware/validateQuery"),
     require("./middleware/checkBlacklist"),
     require("./middleware/fetchPackage"),
+    require("./middleware/readCachedFile"),
+    require("./middleware/switchExternal"),
     require("./middleware/findFile"),
     require("./actions/serveFile")
   );

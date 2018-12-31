@@ -3,6 +3,7 @@
   "scripts": {
     "start": "docker-compose up",
     "build": "NODE_ENV=production webpack -p --json > stats.json",
+    "dev": "DATA_URL=redis://192.168.1.93:6378 CACHE_URL=redis://192.168.1.93:6378 CLOUDFLARE_EMAIL=abc@aa.com CLOUDFLARE_KEY=3 CACHE_DIR=/.cache node server.js",
     "lint": "eslint modules",
     "test": "jest"
   },
@@ -23,6 +24,7 @@
     "date-fns": "^1.28.1",
     "etag": "^1.8.0",
     "express": "^4.15.2",
+    "fs-extra": "^7.0.1",
     "gunzip-maybe": "^1.4.0",
     "invariant": "^2.2.2",
     "isomorphic-fetch": "^2.2.1",
@@ -42,6 +44,7 @@
     "semver": "^5.3.0",
     "sort-by": "^1.2.0",
     "sri-toolbox": "^0.2.0",
+    "tar-fs": "^1.16.3",
     "tar-stream": "^1.6.1",
     "throng": "^4.0.0",
     "validate-npm-package-name": "^3.0.0",
