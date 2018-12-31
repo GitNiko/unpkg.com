@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install pm2 -g && \
     npm ci
-# COPY . .
+COPY . .
 
 ENV PORT 5000
 CMD ["pm2-runtime", "-raw", "process.yml"]
