@@ -1,0 +1,12 @@
+apps:
+  - script   : server.js
+    instances: 1
+    exec_mode: cluster
+    env:
+      DATA_URL: redis://192.168.1.93:6378
+      CACHE_URL: redis://192.168.1.93:6378
+      CLOUDFLARE_EMAIL: abc@aa.com
+      CLOUDFLARE_KEY: 3
+      CACHE_DIR: /.cache
+      NPM_REGISTRY_URL: http://58.213.139.100:4873
+      NODE_ENV: development
