@@ -27,7 +27,7 @@ function readCachedFile(req, res, next) {
     } else {
       console.log(`read cached file: ${path}`)
       fs.fstat(fd, (err, stats) => {
-        if(err) {
+        if(err || stats.isDirectory()) {
           next()
         } else {
           const rs = fs.createReadStream(path, {fd})
