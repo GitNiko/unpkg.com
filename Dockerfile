@@ -7,6 +7,6 @@ RUN npm install pm2 -g && \
     npm ci
 
 ENV PORT 5000
-CMD ["pm2-docker", "-raw", "process.yml"]
+CMD ["pm2-runtime", "process.yml"]
 
 EXPOSE 5000
