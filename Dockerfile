@@ -2,7 +2,7 @@ FROM node:10
 
 WORKDIR /app/
 
-COPY . ./app/
+COPY . /app/
 RUN npm install pm2 -g && \
     npm ci
 
