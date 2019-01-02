@@ -1,11 +1,10 @@
 FROM node:10
 
-WORKDIR /app
+WORKDIR /app/
 
-COPY package.json package-lock.json ./
+COPY . ./app/
 RUN npm install pm2 -g && \
     npm ci
-COPY . .
 
 ENV PORT 5000
 CMD ["pm2-runtime", "-raw", "process.yml"]
